@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView android:id="@+id/tvName" style="@style/TextLabel"/>
+        <TextView android:id="@+id/tvEmail" style="@style/TextLabel"/>
+        <TextView android:id="@+id/tvPhone" style="@style/TextLabel"/>
+        <TextView android:id="@+id/tvCompany" style="@style/TextLabel"/>
+        <TextView android:id="@+id/tvAddress" style="@style/TextLabel"/>
+        <TextView android:id="@+id/tvNotes" style="@style/TextLabel"/>
+        <TextView android:id="@+id/tvCreatedDate" style="@style/TextLabel"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✏️ Edit"
+                android:layout_marginEnd="16dp" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🗑️ Delete" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
