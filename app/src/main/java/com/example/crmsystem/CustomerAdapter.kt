@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crm.model.Customer
-import com.example.crmsystem.CustomerDetailActivity
 import com.example.crmsystem.R
 
 class CustomerAdapter(private val customerList: List<Customer>) :
@@ -34,12 +33,7 @@ class CustomerAdapter(private val customerList: List<Customer>) :
         holder.email.text = "✉️ " + customer.email
 
         // 👇 Add this click listener to open details
-        holder.itemView.setOnClickListener {
-            val context = holder.itemView.context
-            val intent = Intent(context, CustomerDetailActivity::class.java)
-            intent.putExtra("customer_id", customer.id) // Make sure 'id' exists in Customer
-            context.startActivity(intent)
-        }
+
     }
 
 

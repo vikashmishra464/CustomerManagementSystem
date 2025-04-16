@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -36,10 +37,6 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(Intent(this, CustomerListActivity::class.java))
         }
 
-        cardAddCustomer.setOnClickListener {
-            startActivity(Intent(this, AddCustomerActivity::class.java))
-        }
-
         cardLeads.setOnClickListener {
             Toast.makeText(this, "Leads feature coming soon!", Toast.LENGTH_SHORT).show()
         }
@@ -51,13 +48,12 @@ class DashboardActivity : AppCompatActivity() {
         cardSettings.setOnClickListener {
             Toast.makeText(this, "Settings feature coming soon!", Toast.LENGTH_SHORT).show()
         }
-
         cardLogout.setOnClickListener {
-            // Clear session or perform logout logic here
+            FirebaseAuth.getInstance().signOut() // logout from firebase
             val intent = Intent(this, Loginpage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+            finish()
         }
 
     }

@@ -13,12 +13,6 @@
         android:theme="@style/Theme.CRMSystem"
         tools:targetApi="31">
         <activity
-            android:name=".CustomerDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCustomerActivity"
-            android:exported="false" />
-        <activity
             android:name=".CustomerListActivity"
             android:exported="false" />
         <activity
@@ -32,7 +26,13 @@
             android:exported="false" />
         <activity
             android:name=".Signupform"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SplaceScreen"
             android:exported="true">

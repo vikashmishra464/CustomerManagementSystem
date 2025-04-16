@@ -3,81 +3,66 @@ package com.example.crmsystem
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.crmsystem.databinding.ActivitySignupformBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class Signupform : AppCompatActivity() {
 
-    private lateinit var signupButton: AppCompatButton
-    private lateinit var edFName: EditText
-    private lateinit var edLName: EditText
-    private lateinit var edEmail: EditText
-    private lateinit var edPhone: EditText
-    private lateinit var edPassword: EditText
-    private lateinit var checkbox: CheckBox
-    private lateinit var loginText: TextView
+    private lateinit var binding: ActivitySignupformBinding
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_signupform)
+        binding = ActivitySignupformBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        signupButton = findViewById(R.id.signupButton)
-        edFName = findViewById(R.id.edFName)
-        edLName = findViewById(R.id.edLName)
-        edEmail = findViewById(R.id.edEmail)
-        edPhone = findViewById(R.id.edPhone)
-        edPassword = findViewById(R.id.edPassword)
-        checkbox = findViewById(R.id.checkbox)
-        loginText = findViewById(R.id.loginText)
+        firebaseAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
 
-        signupButton.setOnClickListener {
-            val firstNameText = edFName.text.toString().trim()
-            val lastNameText = edLName.text.toString().trim()
-            val emailText = edEmail.text.toString().trim()
-            val phoneText = edPhone.text.toString().trim()
-            val passwordText = edPassword.text.toString().trim()
-            val isTermsChecked = checkbox.isChecked
+        binding.signupButton.setOnClickListener {
+            val firstName = binding.edFName.text.toString().trim()
+            val lastName = binding.edLName.text.toString().trim()
+            val email = binding.edEmail.text.toString().trim()
+            val phone = binding.edPhone.text.toString().trim()
+            val password = binding.edPassword.text.toString().trim()
+            val isTermsChecked = binding.checkbox.isChecked
 
-            when {
-                TextUtils.isEmpty(firstNameText) -> {
-                    edFName.error = "First name is required"
-                    edFName.requestFocus()
-                }
-                TextUtils.isEmpty(emailText) -> {
-                    edEmail.error = "Email is required"
-                    edEmail.requestFocus()
-                }
-                TextUtils.isEmpty(phoneText) -> {
-                    edPhone.error = "Phone number is required"
-                    edPhone.requestFocus()
-                }
-                TextUtils.isEmpty(passwordText) -> {
-                    edPassword.error = "Password is required"
-                    edPassword.requestFocus()
-                }
-                !isTermsChecked -> {
-                    Toast.makeText(this, "You must agree to the terms", Toast.LENGTH_SHORT).show()
-                }
-                else -> {
-                    val intent = Intent(this, Loginpage::class.java)
-                    startActivity(intent)
-                }
+            if (TextUtils.isEmpty(firstName)) {
+                binding.edFName.error = "First name is required"
+            } else if (TextUtils.isEmpty(email)) {
+                binding.edEmail.error = "Email is required"
+            } else if (TextUtils.isEmpty(phone)) {
+                binding.edPhone.error = "Phone is required"
+            } else if (TextUtils.isEmpty(password)) {
+                binding.edPassword.error = "Password is required"
+            } else if (!isTermsChecked) {
+                Toast.makeText(this, "Agree to terms", Toast.LENGTH_SHORT).show()
+            } else {
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            val uid = firebaseAuth.currentUser?.uid ?: ""
+                            val user = UserModel(firstName, lastName, email, phone)
+
+                            database.reference.child("users").child(uid).setValue(user)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "User Registered", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, Loginpage::class.java))
+                                    finish()
+                                }
+                        } else {
+                            Toast.makeText(this, it.exception?.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
         }
 
-        loginText.setOnClickListener {
-            val intent = Intent(this, Loginpage::class.java)
-            startActivity(intent)
-            finish()
+        binding.loginText.setOnClickListener {
+            startActivity(Intent(this, Loginpage::class.java))
         }
-
     }
 }
