@@ -32,11 +32,10 @@ class DashboardActivity : AppCompatActivity() {
         cardSettings = findViewById(R.id.card_settings)
         cardLogout = findViewById(R.id.card_logout)
 
-        // Set click listeners
+        // Set click listener
         cardViewCustomers.setOnClickListener {
-            startActivity(Intent(this, CustomerListActivity::class.java))
+            startActivity(Intent(this, ViewCustomers::class.java))
         }
-
         cardLeads.setOnClickListener {
             Toast.makeText(this, "Leads feature coming soon!", Toast.LENGTH_SHORT).show()
         }

@@ -13,8 +13,20 @@
         android:theme="@style/Theme.CRMSystem"
         tools:targetApi="31">
         <activity
-            android:name=".CustomerListActivity"
+            android:name=".ViewCustomers"
             android:exported="false" />
+        <activity
+            android:name=".UserDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".MessagePage"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".DashboardActivity"
             android:exported="false" />
@@ -23,7 +35,13 @@
             android:exported="false" />
         <activity
             android:name=".Loginpage"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Signupform"
             android:exported="true">

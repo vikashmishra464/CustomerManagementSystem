@@ -12,12 +12,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello User"
-        android:layout_marginTop="230dp"
-        android:textSize="40dp"
-        android:fontFamily="sans-serif-medium"
         android:layout_marginLeft="20dp"
-        />
+        android:layout_marginTop="230dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/greet"
+        android:textSize="40dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,58 +28,57 @@
         />
 
     <!-- Login Form Area -->
+
+    <!-- Social Login Area -->
+
     <RelativeLayout
+        android:id="@+id/loginBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="60dp"
-        android:id="@+id/loginBox">
+        android:layout_marginTop="60dp">
 
         <EditText
             android:id="@+id/edUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username or e-mail"
-            android:inputType="text"
             android:background="@drawable/edit_text_bg"
-            />
+            android:hint="Username or e-mail"
+            android:inputType="text" />
+
         <EditText
             android:id="@+id/edPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="numberPassword"
-            android:background="@drawable/edit_text_bg"
             android:layout_below="@id/edUserName"
             android:layout_marginTop="10dp"
-            />
+            android:background="@drawable/edit_text_bg"
+            android:hint="Password"
+            android:inputType="numberPassword" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forgot password?"
             android:layout_below="@id/edPassword"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
-            />
+            android:text="Forgot password?" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
             android:layout_below="@id/textView"
-            android:id="@+id/loginButton"
-            android:background="@drawable/button_bg"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:textColor="@color/white"
-            />
+            android:background="@drawable/button_bg"
+            android:text="Login"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
-    <!-- Social Login Area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

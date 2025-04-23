@@ -46,7 +46,7 @@ class Signupform : AppCompatActivity() {
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val uid = firebaseAuth.currentUser?.uid ?: ""
-                            val user = UserModel(firstName, lastName, email, phone)
+                            val user = UserModel(firstName, lastName, email, phone, "user")
 
                             database.reference.child("users").child(uid).setValue(user)
                                 .addOnSuccessListener {

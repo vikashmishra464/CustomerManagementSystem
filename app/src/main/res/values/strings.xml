@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CRMSystem</string>
+    <string name="greet">Hello User</string>
 </resources>

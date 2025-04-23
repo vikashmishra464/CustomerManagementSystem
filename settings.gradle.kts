@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CRMSystem"
 include(":app")
- 
+include(":messagepage")
