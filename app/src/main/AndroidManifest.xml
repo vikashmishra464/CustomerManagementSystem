@@ -13,13 +13,16 @@
         android:theme="@style/Theme.CRMSystem"
         tools:targetApi="31">
         <activity
+            android:name=".Complain"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".ViewCustomers"
             android:exported="false" />
         <activity
             android:name=".UserDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".MessagePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

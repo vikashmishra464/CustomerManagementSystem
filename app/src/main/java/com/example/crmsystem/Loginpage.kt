@@ -48,10 +48,17 @@ class Loginpage : AppCompatActivity() {
                                 ref.get().addOnSuccessListener { snapshot ->
                                     val role = snapshot.child("role").value.toString()
 
-                                    if (role == "admin") {
-                                        startActivity(Intent(this, DashboardActivity::class.java))
-                                    } else if (role == "user") {
-                                        startActivity(Intent(this, UserDashboard::class.java))
+                                    // Create Intent based on role and pass UID
+                                    val intent = when (role) {
+                                        "admin" -> Intent(this, DashboardActivity::class.java)
+                                        "user" -> Intent(this, UserDashboard::class.java)
+                                        else -> null
+                                    }
+
+                                    if (intent != null) {
+                                        intent.putExtra("UID", uid) // Add UID to Intent
+                                        startActivity(intent)
+                                        finish() // Optional: Close Loginpage
                                     } else {
                                         Toast.makeText(this, "Unknown role", Toast.LENGTH_SHORT).show()
                                     }
@@ -63,14 +70,12 @@ class Loginpage : AppCompatActivity() {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
-                }
-
-                else{
-                    Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT)
-                        .show()
+                } else {
+                    Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
         createAccount.setOnClickListener {
             val intent = Intent(this, Signupform::class.java)
             startActivity(intent)
@@ -83,4 +88,3 @@ class Loginpage : AppCompatActivity() {
         }
     }
 }
-
