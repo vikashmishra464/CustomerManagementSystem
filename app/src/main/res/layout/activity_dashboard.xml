@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="📌 Leads / Opportunities"
+                android:text="📌 Complains"
                 android:textSize="18sp"
                 android:background="@drawable/button_bg"
                 android:textColor="#000"
@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="📊 Reports"
+                android:text="📊 FeedBacks"
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:background="@drawable/button_bg"

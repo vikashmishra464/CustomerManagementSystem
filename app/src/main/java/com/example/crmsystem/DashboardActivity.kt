@@ -1,5 +1,4 @@
 package com.example.crmsystem
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -14,8 +13,8 @@ class DashboardActivity : AppCompatActivity() {
 
     private lateinit var cardViewCustomers: CardView
     private lateinit var cardAddCustomer: CardView
-    private lateinit var cardLeads: CardView
-    private lateinit var cardReports: CardView
+    private lateinit var cardNotification: CardView
+    private lateinit var cardComplain: CardView
     private lateinit var cardSettings: CardView
     private lateinit var cardLogout: CardView
 
@@ -27,8 +26,8 @@ class DashboardActivity : AppCompatActivity() {
         // Initialize card views
         cardViewCustomers = findViewById(R.id.card_customers)
         cardAddCustomer = findViewById(R.id.card_add_customer)
-        cardLeads = findViewById(R.id.card_leads)
-        cardReports = findViewById(R.id.card_reports)
+        cardComplain = findViewById(R.id.card_leads)
+        cardNotification = findViewById(R.id.card_reports)
         cardSettings = findViewById(R.id.card_settings)
         cardLogout = findViewById(R.id.card_logout)
 
@@ -36,12 +35,15 @@ class DashboardActivity : AppCompatActivity() {
         cardViewCustomers.setOnClickListener {
             startActivity(Intent(this, ViewCustomers::class.java))
         }
-        cardLeads.setOnClickListener {
-            Toast.makeText(this, "Leads feature coming soon!", Toast.LENGTH_SHORT).show()
+        cardAddCustomer.setOnClickListener{
+            startActivity(Intent(this, AddCustomerActivity::class.java))
+        }
+        cardComplain.setOnClickListener {
+            startActivity(Intent(this, AdminComplainArea::class.java))
         }
 
-        cardReports.setOnClickListener {
-            Toast.makeText(this, "Reports feature coming soon!", Toast.LENGTH_SHORT).show()
+        cardNotification.setOnClickListener {
+            startActivity(Intent(this, NoticationCenterAdmin::class.java))
         }
 
         cardSettings.setOnClickListener {

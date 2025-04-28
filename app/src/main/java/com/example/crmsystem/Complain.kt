@@ -23,7 +23,8 @@ data class Complaint(
     val userId: String = "",
     val complaintText: String = "",
     val timestamp: Long = 0,
-    val complaintId: String = ""
+    val complaintId: String = "",
+    val feedback: String? = null
 )
 
 class Complain : AppCompatActivity() {
@@ -96,7 +97,8 @@ class Complain : AppCompatActivity() {
             userId = user.uid,
             complaintText = complaintText,
             timestamp = System.currentTimeMillis(),
-            complaintId = UUID.randomUUID().toString()
+            complaintId = UUID.randomUUID().toString(),
+            feedback = null
         )
 
         // Save complaint to Firebase Realtime Database
@@ -115,6 +117,7 @@ class Complain : AppCompatActivity() {
         val user = auth.currentUser
         if (user == null) {
             complaintsAdapter.submitList(emptyList())
+            findViewById<TextView>(R.id.complaintsHeader)?.text = "No complaints yet"
             return
         }
 
@@ -131,6 +134,8 @@ class Complain : AppCompatActivity() {
                     }
                     complaints.sortByDescending { it.timestamp }
                     complaintsAdapter.submitList(complaints)
+                    findViewById<TextView>(R.id.complaintsHeader)?.text =
+                        if (complaints.isEmpty()) "No complaints yet" else "Previous Complaints"
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -146,6 +151,7 @@ class ComplaintsAdapter : RecyclerView.Adapter<ComplaintsAdapter.ComplaintViewHo
     class ComplaintViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val complaintText: TextView = itemView.findViewById(R.id.complaintText)
         val complaintDate: TextView = itemView.findViewById(R.id.complaintDate)
+        val feedbackText: TextView = itemView.findViewById(R.id.feedbackText)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComplaintViewHolder {
@@ -161,6 +167,10 @@ class ComplaintsAdapter : RecyclerView.Adapter<ComplaintsAdapter.ComplaintViewHo
             "dd MMM yyyy, HH:mm",
             Locale.getDefault()
         ).format(Date(complaint.timestamp))
+
+        // Display feedback if available
+        holder.feedbackText.text = complaint.feedback?.let { "Feedback: $it" } ?: "No feedback yet"
+        holder.feedbackText.visibility = if (complaint.feedback != null) View.VISIBLE else View.GONE
     }
 
     override fun getItemCount(): Int = complaints.size
