@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="@drawable/button_bg"
     android:layout_height="match_parent"
     tools:context=".MessagePage">
 

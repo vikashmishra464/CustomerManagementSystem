@@ -3,10 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/button_bg"
     android:padding="16dp">
 
     <ProgressBar
         android:id="@+id/progressBar"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -20,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User Profile"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="First Name:"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvFirstNameLabel"
         app:layout_constraintTop_toTopOf="@id/tvFirstNameLabel"
@@ -51,6 +57,7 @@
         android:layout_height="wrap_content"
         android:text="Last Name:"
         android:textSize="16sp"
+        android:textColor="@color/black"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvFirstNameLabel" />
@@ -60,6 +67,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvLastNameLabel"
         app:layout_constraintTop_toTopOf="@id/tvLastNameLabel"
@@ -71,6 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Email:"
         android:textSize="16sp"
+        android:textColor="@color/black"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvLastNameLabel" />
@@ -80,6 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvEmailLabel"
         app:layout_constraintTop_toTopOf="@id/tvEmailLabel"
@@ -91,6 +102,7 @@
         android:layout_height="wrap_content"
         android:text="Phone:"
         android:textSize="16sp"
+        android:textColor="@color/black"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvEmailLabel" />
@@ -100,6 +112,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvPhoneLabel"
         app:layout_constraintTop_toTopOf="@id/tvPhoneLabel"
@@ -110,6 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Role:"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +134,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvRoleLabel"
         app:layout_constraintTop_toTopOf="@id/tvRoleLabel"

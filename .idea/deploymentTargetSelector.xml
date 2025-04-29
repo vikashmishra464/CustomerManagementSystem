@@ -10,6 +10,14 @@
       </SelectionState>
       <SelectionState runConfigName="Loginpage">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-04-29T19:42:14.360576Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=13990168650006F" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="messagepage">
         <option name="selectionMode" value="DROPDOWN" />

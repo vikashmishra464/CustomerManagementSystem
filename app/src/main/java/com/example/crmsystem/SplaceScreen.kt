@@ -16,7 +16,7 @@ class SplaceScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splace_screen)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, Signupform::class.java)
+            val intent = Intent(this, Loginpage::class.java)
             startActivity(intent);
             finish()
         }, 3000);

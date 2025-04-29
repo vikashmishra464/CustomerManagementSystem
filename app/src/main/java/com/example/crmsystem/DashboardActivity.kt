@@ -43,7 +43,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         cardNotification.setOnClickListener {
-            startActivity(Intent(this, NoticationCenterAdmin::class.java))
+            startActivity(Intent(this, NotificationCenterAdmin::class.java))
         }
 
         cardSettings.setOnClickListener {

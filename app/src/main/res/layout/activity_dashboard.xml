@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="📊 FeedBacks"
+                android:text="📊 Notification Center"
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:background="@drawable/button_bg"

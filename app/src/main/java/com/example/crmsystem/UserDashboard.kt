@@ -26,10 +26,12 @@ class UserDashboard : AppCompatActivity() {
         }
         complains.setOnClickListener{
             val intent = Intent(this,Complain::class.java)
-            intent.putExtra("UID", uid)
             startActivity(intent)
         }
-        notification.setOnClickListener{}
+        notification.setOnClickListener{
+            val intent = Intent(this,NotificationCenterUser::class.java)
+            startActivity(intent)
+        }
         coupon.setOnClickListener{}
         feedback.setOnClickListener{}
 
