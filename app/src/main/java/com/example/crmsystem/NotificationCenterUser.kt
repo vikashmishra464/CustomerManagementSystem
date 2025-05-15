@@ -31,13 +31,11 @@ class NotificationCenterUser : AppCompatActivity() {
 
         // Setup RecyclerView
         adapter = NotificationAdapter(
-            onEdit = {}, // No edit for users
-            onDelete = {} // No delete for users
+            onEdit = {},
+            onDelete = {}
         )
         rvNotifications.layoutManager = LinearLayoutManager(this)
         rvNotifications.adapter = adapter
-
-        // Request notification permission for Android 13+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -50,7 +48,6 @@ class NotificationCenterUser : AppCompatActivity() {
                 Log.d("FCM", if (task.isSuccessful) "Subscribed to all_users" else "Subscription failed: ${task.exception?.message}")
             }
 
-        // Load notifications
         loadNotifications()
     }
 

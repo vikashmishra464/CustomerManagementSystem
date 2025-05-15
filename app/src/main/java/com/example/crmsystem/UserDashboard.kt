@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class UserDashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,13 @@ class UserDashboard : AppCompatActivity() {
             startActivity(intent)
         }
         coupon.setOnClickListener{}
-        feedback.setOnClickListener{}
+        feedback.setOnClickListener{
+            FirebaseAuth.getInstance().signOut() // logout from firebase
+            val intent = Intent(this, Loginpage::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
 
 
     }
